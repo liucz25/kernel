@@ -1,0 +1,53 @@
+  865  qemu -kernel linux-3.18.6/arch/x86/boot/bzImage -initrd rootfs.img
+  866  ls
+  867  cd menu
+  868  ls
+  869  vi Makefile
+  870  make 
+  871  make rootfs
+  872  vi Makefile
+  873  make rootfs
+  874  vi Makefile
+  875  make rootfs
+  876  vi Makefile
+  877  make rootfs
+  878  vi Makefile
+  879  make rootfs
+  880  cd ..
+  881  ls
+  882  cd rootfs
+  883  ls
+  884  cd ..
+  885  ls
+  886  cd ..
+  887  ls
+  888  cd Code
+  889  ls
+  890  cd ..
+  891  ls
+  892  cd LinuxKernel
+  893  ls
+  894  cd Code
+  895  vim h.c
+  896  gcc -o init h.c -m32 -static -lpthread
+  897  ./init
+  898  vim h.c
+  899  gcc -o init h.c -m32 -static -lpthread
+  900  ./init
+  901  dd if=/dev/zero of=rfs.img bs=1024 count=8192
+  902  ls
+  903  mke2fs -F rfs.img -b 1024 -m 0
+  904  tune2fs rfs.img -i 0
+  905  chmod 777 rfs.img
+  906  mkdir rfs
+  907  mount -o loop rfs.img rfs
+  908  sudo mount -o loop rfs.img rfs
+  909  sudo mount  rfs.img rfs
+  910  modprobe loop
+  911  sudo modprobe loop
+  912  ls
+  913  history
+  914  history| tail -n 50
+
+umount rfs
+gzip -9 rfs.img
